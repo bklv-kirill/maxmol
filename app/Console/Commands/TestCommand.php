@@ -12,7 +12,6 @@ class TestCommand extends Command
 
     public function handle(): void
     {
-        dd(fake()->sentence(3));
         dd('test');
     }
 }
