@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\Stock;
 use App\Models\Warehouse;
@@ -33,6 +35,27 @@ class DatabaseSeeder extends Seeder
                     'product_id' => $product->id,
                     'warehouse_id' => $warehouse->id,
                     'stock' => rand(10, 100),
+                ]);
+            }
+        }
+
+        Order::factory()
+            ->count(50)
+            ->create();
+
+        $orders = Order::query()
+            ->get();
+
+        foreach ($orders as $order) {
+            $products = Product::query()
+                ->inRandomOrder()
+                ->limit(3)
+                ->get();
+
+            foreach ($products as $product) {
+                OrderItem::query()->create([
+                    'order_id' => $order->id,
+                    'product_id' => $product->id,
                 ]);
             }
         }
