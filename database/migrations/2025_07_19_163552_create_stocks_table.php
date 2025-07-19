@@ -18,6 +18,8 @@ return new class extends Migration {
                 ->constrained('warehouses')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+
+            $table->integer('stock');
         });
     }
 
