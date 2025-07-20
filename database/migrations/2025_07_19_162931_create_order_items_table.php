@@ -18,6 +18,8 @@ return new class extends Migration {
                 ->constrained('products')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+
+            $table->integer('count');
         });
     }
 
