@@ -56,6 +56,7 @@ class DatabaseSeeder extends Seeder
                 OrderItem::query()->create([
                     'order_id' => $order->id,
                     'product_id' => $product->id,
+                    'count' => rand(1, 3),
                 ]);
             }
         }
